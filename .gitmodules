@@ -1,0 +1,3 @@
+[submodule "e7awgsw"]
+	path = e7awgsw
+	url = git@github.com:e-trees/e7awg_sw.git
