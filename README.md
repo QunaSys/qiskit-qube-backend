@@ -24,5 +24,67 @@ Qiskit Experimentsに用意されているキャリブレーション実験コ�
 
 # 実行例
 
-*TODO*
+## 環境準備
 
+リポジトリをクローンし、poetryで必要なpythonパッケージをインストールします。
+
+```shell
+git clone git@github.com:QunaSys/qiskit-qube-backend.git
+cd qiskit-qube-backend
+poetry shell
+poetry install
+```
+
+## キャリブレーション実験のテスト実行
+
+Qiskit Experimentsに用意されているキャリブレーション実験 (Calibrations) を幾つか実行し、実験中に実行されるQiskitのパルススケジュール (Schedule) の内容の確認や、送受信されるはずのデータの記録、プロットなどを行います。
+
+```shell
+cd qiskit_pulse_backend
+python calibration_test.py
+```
+
+[以下のコード](https://github.com/QunaSys/qiskit-qube-backend/blob/264657418517da97caad5d0d9b8ec22fb0f487b5/qiskit_qube_backend/calibration_test.py#L188-L200)でどの実験を走らせるかを選択します。
+
+```python
+def run_calibrations() -> None:
+    init_jax()
+
+    path = "record.pkl"
+
+    record_cals(cs.calibrate_frequency_with_spectroscopy, path)
+    play_cals(cs.calibrate_frequency_with_spectroscopy, path)
+
+    # record_cals(cs.calibrate_amplitude_with_rabi_experiment, path)
+    # play_cals(cs.calibrate_amplitude_with_rabi_experiment, path)
+
+    # record_cals(cs.calibrate_sx_pulse, path)
+    # play_cals(cs.calibrate_sx_pulse, path)
+```
+
+### Qubit Spectroscopy
+
+以下の行を有効にしてスクリプトを実行します。
+
+```python
+    record_cals(cs.calibrate_frequency_with_spectroscopy, path)
+    play_cals(cs.calibrate_frequency_with_spectroscopy, path)
+```
+
+### ラビ振動実験
+
+以下の行を有効にしてスクリプトを実行します。
+
+```python
+    record_cals(cs.calibrate_amplitude_with_rabi_experiment, path)
+    play_cals(cs.calibrate_amplitude_with_rabi_experiment, path)
+```
+
+### ゲートファインチューニング
+
+以下の行を有効にしてスクリプトを実行します。
+
+```python
+    record_cals(cs.calibrate_sx_pulse, path)
+    play_cals(cs.calibrate_sx_pulse, path)
+```
