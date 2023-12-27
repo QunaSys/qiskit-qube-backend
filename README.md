@@ -62,7 +62,7 @@ def run_calibrations() -> None:
     # play_cals(cs.calibrate_sx_pulse, path)
 ```
 
-### Qubit Spectroscopy
+**Qubit Spectroscopy**
 
 以下の行を有効にしてスクリプトを実行します。
 
@@ -71,7 +71,7 @@ def run_calibrations() -> None:
     play_cals(cs.calibrate_frequency_with_spectroscopy, path)
 ```
 
-### ラビ振動実験
+**ラビ振動実験**
 
 以下の行を有効にしてスクリプトを実行します。
 
@@ -80,11 +80,32 @@ def run_calibrations() -> None:
     play_cals(cs.calibrate_amplitude_with_rabi_experiment, path)
 ```
 
-### ゲートファインチューニング
+**ゲートファインチューニング**
 
 以下の行を有効にしてスクリプトを実行します。
 
 ```python
     record_cals(cs.calibrate_sx_pulse, path)
     play_cals(cs.calibrate_sx_pulse, path)
+```
+
+*出力結果の変更*
+
+各キャリブレーション実験では複数のパルススケジュールが実行されます。ここではQiskitのパルススケジュールがすべて標準出力に出力され、最初のパルススケジュールの結果が画像ファイルにプロットされます。[以下のコード](https://github.com/QunaSys/qiskit-qube-backend/blob/730e0bf443d3d95b414aee2072bff9afd55b7acd/qiskit_qube_backend/calibration_test.py#L68-L81)で、何番目の結果をプロットするかをカスタマイズできます。
+
+```python
+def record_cals(calsf: Callable[[Backend], None], path: str) -> None:
+    recorder = SignalRecorder()
+    backend = gen_backend()
+    backend.qube = Qube()
+    backend.recorder = recorder
+    backend.mode = Mode.RECORD
+
+    calsf(backend)
+    setup, out_arr = recorder.history()[0]  # 記録データから最初の結果を取得
+    plot_setup(setup)
+    plot_out_arr(out_arr)
+    plot_iq_plane(out_arr)
+
+    recorder.save(path)
 ```

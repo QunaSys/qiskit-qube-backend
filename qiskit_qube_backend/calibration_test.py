@@ -190,11 +190,11 @@ def run_calibrations() -> None:
 
     path = "record.pkl"
 
-    # record_cals(cs.calibrate_frequency_with_spectroscopy, path)
-    # play_cals(cs.calibrate_frequency_with_spectroscopy, path)
+    record_cals(cs.calibrate_frequency_with_spectroscopy, path)
+    play_cals(cs.calibrate_frequency_with_spectroscopy, path)
 
-    record_cals(cs.calibrate_amplitude_with_rabi_experiment, path)
-    play_cals(cs.calibrate_amplitude_with_rabi_experiment, path)
+    # record_cals(cs.calibrate_amplitude_with_rabi_experiment, path)
+    # play_cals(cs.calibrate_amplitude_with_rabi_experiment, path)
 
     # record_cals(cs.calibrate_sx_pulse, path)
     # play_cals(cs.calibrate_sx_pulse, path)
