@@ -89,7 +89,7 @@ def run_calibrations() -> None:
     play_cals(cs.calibrate_sx_pulse, path)
 ```
 
-*出力結果の変更*
+## 出力結果の変更
 
 各キャリブレーション実験では複数のパルススケジュールが実行されます。デフォルトではQiskitのパルススケジュールの概要がすべて標準出力に出力され、最初のパルススケジュールの結果が画像ファイルにプロットされます。[以下のコード](https://github.com/QunaSys/qiskit-qube-backend/blob/730e0bf443d3d95b414aee2072bff9afd55b7acd/qiskit_qube_backend/calibration_test.py#L68-L81)で、何番目の結果をプロットするかをカスタマイズできます。
 
