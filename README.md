@@ -22,6 +22,8 @@ Qiskit Experimentsに用意されているキャリブレーション実験コ�
 |qube\_backend.py|QuBEデバイスを表現するQiskitの`Backend`|
 |recorder.py|送受信データの記録と再生のためのユーティリティ|
 
+backends.pyの中で、Qiskit Dynamicsのシミュレータのパラメータや各ゲートの波形等を仮に設定していますが、これらは実際のデバイスに応じて設定する必要があります。
+
 # 実行例
 
 ## 環境準備
