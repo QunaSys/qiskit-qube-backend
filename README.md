@@ -34,8 +34,8 @@ backends.pyの中で、Qiskit Dynamicsのシミュレータのパラメータや
 
 ```shell
 git clone git@github.com:QunaSys/qiskit-qube-backend.git
-git submodule update --init --recursive
 cd qiskit-qube-backend
+git submodule update --init --recursive
 poetry shell
 poetry install
 ```
