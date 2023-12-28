@@ -1,5 +1,7 @@
 # qiskit-qube-backend
-Qiskit Backend implementation for QuBE devices
+
+Qiskit Backend implementation for QuBE devices.
+This repository contains source code that has been copied and modified from Qiskit.
 
 # 目的と機能
 
