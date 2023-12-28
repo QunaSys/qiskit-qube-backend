@@ -27,8 +27,6 @@ from qiskit_experiments.calibration_management.basis_gate_library import (
 from qiskit_experiments.calibration_management.calibrations import Calibrations
 from qube_backend import DynamicsBackend
 
-# from solver_classes import Solver
-
 
 def init_jax() -> None:
     jax.config.update("jax_enable_x64", True)
